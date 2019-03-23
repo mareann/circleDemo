@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint --fix src/**/*.js src/*.js",
     "start": "nodemon src/server.js --exec babel-node | ./node_modules/.bin/bunyan",
+    "start:windows": "nodemon src/server.js --exec babel-node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,8 +20,11 @@
   },
   "homepage": "https://github.com/mkarazin/graphDemo#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "bunyan": "^1.8.10",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "express-validation": "^1.0.2",
+    "joi": "^14.3.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -31,6 +35,7 @@
     "babel-preset-es2017": "^6.24.1",
     "eslint": "^5.15.1",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0"
+    "eslint-plugin-import": "^2.16.0",
+    "nodemon": "^1.18.10"
   }
 }
