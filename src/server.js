@@ -1,10 +1,22 @@
 import express from 'express';
+import bodyParser from 'body-parser';
+
+import ErrorHandlers from './utils/errorHandlers';
 import { log } from './utils/logger';
 
 const app = express();
 
+// Enable support for JSON parsing of body arguments
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
+
 // Hook up our routes
 app.use('/', require('./routes'));
+
+// If any route throws a ValidationError, this middleware will handle it
+app.use(ErrorHandlers.ParameterValidationErrorHandler);
 
 const port = 3000;
 
