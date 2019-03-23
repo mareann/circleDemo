@@ -41,3 +41,6 @@ jspm_packages
 
 # Not dealing with package-lock for now
 package-lock.json
+
+# Don't check-in built files
+dist

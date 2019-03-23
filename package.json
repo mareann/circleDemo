@@ -7,7 +7,8 @@
     "lint": "./node_modules/.bin/eslint --fix src/**/*.js src/*.js",
     "start": "nodemon src/server.js --exec babel-node | ./node_modules/.bin/bunyan",
     "start:windows": "nodemon src/server.js --exec babel-node",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src --copy-files --out-dir dist"
   },
   "repository": {
     "type": "git",
