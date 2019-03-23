@@ -1,5 +1,5 @@
 import expressValidation from 'express-validation';
-import { ParameterValidationErrors } from './../responseObjects';
+import ResponseObjects from './../responseObjects';
 
 /**
  * Handles express-validation ValidationError(s)
@@ -10,7 +10,7 @@ import { ParameterValidationErrors } from './../responseObjects';
  */
 export const ParameterValidationErrorHandler = (err, req, res, next) => {
   if (err && err instanceof expressValidation.ValidationError) {
-    ParameterValidationErrors(res, err);
+    ResponseObjects.ParameterValidationErrors(res, err);
   } else if (err) {
     next(err);
   } else {

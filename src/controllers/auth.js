@@ -1,4 +1,4 @@
-import * as ResponseObjects from '../utils/responseObjects';
+import ResponseObjects from '../utils/responseObjects';
 
 import {
   UserService
@@ -6,14 +6,11 @@ import {
 
 class AuthController {
   static async login(req, res, next) {
+    // Parameters are validated by a prior middleware
     const {
       username,
       password,
     } = req.body;
-
-    if (!username || !password) {
-      ResponseObjects.InvalidParameters(res, 'Missing one or both of username, password');
-    }
 
     // Load the user by the username and password
     const user = await UserService.verifyPassword(username, password);
