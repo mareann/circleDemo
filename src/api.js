@@ -13,6 +13,12 @@ export const InitAPI = () => {
     extended: true,
   }));
 
+  // Log all incoming requests
+  api.use((req, res, next) => {
+    log.info(`API Request: ${req.method} | ${req.url} | ${req.ip} | ${req.get('User-Agent')}`);
+    next();
+  });
+
   // Hook up our routes
   api.use('/', require('./routes'));
 
