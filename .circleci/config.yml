@@ -23,6 +23,19 @@ jobs:
       - image: circleci/node:8.9.4 # primary container, where your job's commands are run
     steps:
 
+      # install dependencies
+      - run:
+          name: Install
+          command: npm install
+
       - run:
           name: Unit test
           command: npm run test:unit
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - build
+    - unittest
+    
