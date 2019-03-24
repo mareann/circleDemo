@@ -6,6 +6,6 @@ jobs:
     steps:
       - checkout
 
-      - run
+      - run:
           name: Build project
           command: npm run build
