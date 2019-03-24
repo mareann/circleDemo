@@ -24,7 +24,7 @@ jobs:
     steps:
 
       - checkout
-      
+
       # install dependencies
       - run:
           name: Install
@@ -40,3 +40,5 @@ workflows:
     jobs:
     - build
     - unittest
+        requires:
+          - build
