@@ -39,6 +39,6 @@ workflows:
   workflow:
     jobs:
     - build
-    - unittest
+    - unittest:
         requires:
           - build
