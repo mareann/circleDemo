@@ -19,6 +19,10 @@ jobs:
 
 
   unittest:
+    docker:
+      - image: circleci/node:8.9.4 # primary container, where your job's commands are run
+    steps:
+
       - run:
           name: Unit test
           command: npm run test:unit
