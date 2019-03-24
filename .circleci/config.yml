@@ -13,6 +13,12 @@ jobs:
           name: Install
           command: npm install
 
+      # save to cache node modules
+      - save_cache:
+          paths: 
+            - node_modules
+          key: v1-node-modules-cache-{{ checksum "package.json" }}
+
       - run:
           name: Build project
           command: npm run build
@@ -25,10 +31,11 @@ jobs:
 
       - checkout
 
-      # install dependencies
-      - run:
-          name: Install
-          command: npm install
+      # save to cache node modules
+      - restore_cache:
+          paths: 
+            - node_modules
+          key: v1-node-modules-cache-{{ checksum "package.json" }}
 
       - run:
           name: Unit test
