@@ -41,6 +41,24 @@ jobs:
           name: Unit test
           command: npm run test:unit
 
+
+  initest:
+    docker:
+      - image: circleci/node:8.9.4 # primary container, where your job's commands are run
+    steps:
+
+      - checkout
+
+      # save to cache node modules
+      - restore_cache:
+          paths: 
+            - node_modules
+          key: v1-node-modules-cache-{{ checksum "package.json" }}
+
+      - run:
+          name: integration test
+          command: npm run test:integration
+
 workflows:
   version: 2
   workflow:
@@ -49,3 +67,7 @@ workflows:
     - unittest:
         requires:
           - build
+    - initest:
+        requires:
+          - build
+          
